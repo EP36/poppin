@@ -1,17 +1,32 @@
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React from 'react';
+import { useEffect } from 'react';
+import { Text } from 'react-native';
 
-const MapPage = () => {
+const MapPage = ({ navigation, route }) => {
+  useEffect(() => {
+    console.log('hey now', route.params.longitude, route.params.latitude)
+  })
   return (
     <MapView  
-    style={{ flex: 1 }}
-    provider={PROVIDER_GOOGLE}
-    showsUserLocationinitialRegion={{
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0923,
-      longitudeDelta: 0.421
-    }} />
+      style={{ flex: 1 }}
+      provider={PROVIDER_GOOGLE}
+      region={{
+        latitude: route.params.latitude,
+        longitude: route.params.longitude,
+        latitudeDelta: 0.04,
+        longitudeDelta: 0.2,
+      }} 
+    >
+      <Marker
+        coordinate={{ latitude: route.params.latitude, longitude: route.params.longitude }} 
+        stopPropagation
+      >
+        <Callout>
+          <Text>This is where the latest vid thumbnail goes</Text>
+        </Callout>
+      </Marker>
+    </MapView>
   )
 };
 

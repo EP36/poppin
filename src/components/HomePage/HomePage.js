@@ -24,6 +24,7 @@ const HomePage = ({ navigation }) => {
     text = errorMsg
   } else if (currLocation) {
     text = JSON.stringify(currLocation);
+    console.log(currLocation.coords.latitude)
   }
 
   return (
@@ -47,7 +48,7 @@ const HomePage = ({ navigation }) => {
             <Button
         title="Go to the map"
         onPress={() =>
-          navigation.navigate('Map', { name: 'Jane' })
+          navigation.navigate('Map', { name: 'Jane', longitude: currLocation.coords?.longitude, latitude: currLocation.coords?.latitude })
         }
       />
     </View>
