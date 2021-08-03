@@ -9,7 +9,7 @@ const MapPage = () => {
     showsUserLocationinitialRegion={{
       latitude: 37.78825,
       longitude: -122.4324,
-      latitudeDelta: 0.0922,
+      latitudeDelta: 0.0923,
       longitudeDelta: 0.421
     }} />
   )
