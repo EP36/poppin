@@ -7,15 +7,24 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './components/HomePage/HomePage';
 import ProfileScreen from './components/ProfileScreen/ProfileScreen';
 import MapPage from './components/MapPage/MapPage';
-import VideoFeed from './components/VideoFeed/VideoFeed';
-import { useState } from 'react';
+// import SignIn from './components/SignIn/SignIn';
+// import SplashPage from './components/SplashPage/SplashPage';
+import CameraPage from './components/CameraPage/CameraPage';
+
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react-native';
+
+// Amplify integration with Expo
+Amplify.configure(config);
 
 const Stack = createStackNavigator();
+export const AuthContext = React.createContext();
 
-export default function App() {
+function App() {
 
   return (
-    <NavigationContainer>
+    <NavigationContainer fallback={<Text>Loading fallback...</Text>}>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
@@ -31,8 +40,8 @@ export default function App() {
           component={MapPage}
         />
         <Stack.Screen
-          name="Video"
-          component={VideoFeed}
+          name="Camera"
+          component={CameraPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -47,3 +56,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default withAuthenticator(App, true);

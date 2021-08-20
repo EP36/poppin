@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import { useRef } from 'react';
 
-export default function VideoFeed() {
+export default function CameraPage() {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [isCameraReady, setCameraReady] = useState(false);
+  const cameraRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -12,6 +15,25 @@ export default function VideoFeed() {
       setHasPermission(status === 'granted');
     })();
   }, []);
+
+  const onStartRecording = async (props) => {
+    if (props.isCameraReady) {
+      props.setState({ isRecording: true, fileUrl: null });
+      props.setVideoDuration();
+      props.cameraRef.recordAsync({ quality: '4:3' })
+        .then((file) => {
+          props.setState({ fileUrl: file.uri });
+        });
+    }
+  };
+
+  const onStopRecording = (props) => {
+    if (props.isRecording) {
+      props.cameraRef.stopRecording();
+      props.setState({ isRecording: false });
+      clearInterval(props.interval);
+    }
+  };
 
   if (hasPermission === null) {
     return <View />;
@@ -21,7 +43,12 @@ export default function VideoFeed() {
   }
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
+      <Camera 
+        style={styles.camera} 
+        type={type}
+        onCameraReady={setCameraReady(true)}
+        ref={cameraRef}
+      >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-poppin-dev-120309-authRole",
+      "UnauthRoleArn": "arn:aws:iam::659319976587:role/amplify-poppin-dev-120309-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::659319976587:role/amplify-poppin-dev-120309-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-poppin-dev-120309-deployment",
+      "UnauthRoleName": "amplify-poppin-dev-120309-unauthRole",
+      "StackName": "amplify-poppin-dev-120309",
+      "StackId": "arn:aws:cloudformation:us-east-2:659319976587:stack/amplify-poppin-dev-120309/1e6eb580-01d0-11ec-a588-0ac770572ad2",
+      "AmplifyAppId": "d3adqdmqarhkdn"
+    },
+    "categories": {
+      "auth": {
+        "poppinaa12fd6a": {}
+      }
+    }
+  }
+}

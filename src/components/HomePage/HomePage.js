@@ -40,12 +40,18 @@ const HomePage = ({ navigation }) => {
         }
       />
       <Button
+        title="Go to Jane's Camera"
+        onPress={() =>
+          navigation.navigate('Camera', { name: 'Jane' })
+        }
+      />
+      <Button
         title="Go to Jane's video feed"
         onPress={() =>
           navigation.navigate('Video', { name: 'Jane' })
         }
       />
-            <Button
+      <Button
         title="Go to the map"
         onPress={() =>
           navigation.navigate('Map', { name: 'Jane', longitude: currLocation.coords?.longitude, latitude: currLocation.coords?.latitude })

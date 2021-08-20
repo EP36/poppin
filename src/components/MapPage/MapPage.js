@@ -4,9 +4,6 @@ import { useEffect } from 'react';
 import { Text } from 'react-native';
 
 const MapPage = ({ navigation, route }) => {
-  useEffect(() => {
-    console.log('hey now', route.params.longitude, route.params.latitude)
-  })
   return (
     <MapView  
       style={{ flex: 1 }}
