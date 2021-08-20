@@ -34,27 +34,27 @@ const HomePage = ({ navigation }) => {
         <Text>{text}</Text>
       </TouchableOpacity>
       <Button
-        title="Go to Jane's profile"
+        title="Go to EP's profile"
         onPress={() =>
-          navigation.navigate('Profile', { name: 'Jane' })
+          navigation.navigate('Profile', { name: 'EP' })
         }
       />
       <Button
-        title="Go to Jane's Camera"
+        title="Go to EP's Camera"
         onPress={() =>
-          navigation.navigate('Camera', { name: 'Jane' })
+          navigation.navigate('Camera', { name: 'EP' })
         }
       />
       <Button
-        title="Go to Jane's video feed"
+        title="Go to EP's video feed"
         onPress={() =>
-          navigation.navigate('Video', { name: 'Jane' })
+          navigation.navigate('Video', { name: 'EP' })
         }
       />
       <Button
         title="Go to the map"
         onPress={() =>
-          navigation.navigate('Map', { name: 'Jane', longitude: currLocation.coords?.longitude, latitude: currLocation.coords?.latitude })
+          navigation.navigate('Map', { name: 'EP', longitude: currLocation.coords?.longitude, latitude: currLocation.coords?.latitude })
         }
       />
     </View>

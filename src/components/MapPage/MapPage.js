@@ -1,9 +1,23 @@
-import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Callout, CalloutSubview, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import React from 'react';
 import { useEffect } from 'react';
-import { Text } from 'react-native';
+import { 
+  StyleSheet, 
+  View, 
+  TextInput, 
+  Button, 
+  Text 
+} from 'react-native';
 
 const MapPage = ({ navigation, route }) => {
+  const handleThumbnail = () => {
+    navigation.navigate('Profile', { name: 'EP' })
+  }
+
+  const handlePostPic = () => {
+    console.log('post pic')
+  }
+
   return (
     <MapView  
       style={{ flex: 1 }}
@@ -19,8 +33,10 @@ const MapPage = ({ navigation, route }) => {
         coordinate={{ latitude: route.params.latitude, longitude: route.params.longitude }} 
         stopPropagation
       >
-        <Callout>
-          <Text>This is where the latest vid thumbnail goes</Text>
+        <Callout onPress={handleThumbnail}>
+          <Button
+            title="Check out the area"
+            />
         </Callout>
       </Marker>
     </MapView>
