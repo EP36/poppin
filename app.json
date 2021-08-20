@@ -1,9 +1,10 @@
 {
   "expo": {
     "name": "poppin",
+    "owner": "poppin",
     "slug": "poppin",
     "scheme": "poppin",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -18,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.poppin.poppin"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,6 +30,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

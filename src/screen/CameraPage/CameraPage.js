@@ -16,24 +16,24 @@ export default function CameraPage() {
     })();
   }, []);
 
-  const onStartRecording = async (props) => {
-    if (props.isCameraReady) {
-      props.setState({ isRecording: true, fileUrl: null });
-      props.setVideoDuration();
-      props.cameraRef.recordAsync({ quality: '4:3' })
-        .then((file) => {
-          props.setState({ fileUrl: file.uri });
-        });
-    }
-  };
+  // const onStartRecording = async (props) => {
+  //   if (props.isCameraReady) {
+  //     props.setState({ isRecording: true, fileUrl: null });
+  //     props.setVideoDuration();
+  //     props.cameraRef.recordAsync({ quality: '4:3' })
+  //       .then((file) => {
+  //         props.setState({ fileUrl: file.uri });
+  //       });
+  //   }
+  // };
 
-  const onStopRecording = (props) => {
-    if (props.isRecording) {
-      props.cameraRef.stopRecording();
-      props.setState({ isRecording: false });
-      clearInterval(props.interval);
-    }
-  };
+  // const onStopRecording = (props) => {
+  //   if (props.isRecording) {
+  //     props.cameraRef.stopRecording();
+  //     props.setState({ isRecording: false });
+  //     clearInterval(props.interval);
+  //   }
+  // };
 
   if (hasPermission === null) {
     return <View />;
@@ -46,7 +46,6 @@ export default function CameraPage() {
       <Camera 
         style={styles.camera} 
         type={type}
-        onCameraReady={setCameraReady(true)}
         ref={cameraRef}
       >
         <View style={styles.buttonContainer}>
@@ -69,10 +68,10 @@ export default function CameraPage() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
   },
   camera: {
-    flex: 1,
+    flex: 3,
   },
   buttonContainer: {
     flex: 1,

@@ -11,7 +11,7 @@ import {
 
 const MapPage = ({ navigation, route }) => {
   const handleThumbnail = () => {
-    navigation.navigate('Profile', { name: 'EP' })
+    navigation.navigate('DogPark')
   }
 
   const handlePostPic = () => {
