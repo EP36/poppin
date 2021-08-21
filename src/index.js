@@ -36,7 +36,7 @@ const AppNavigator = (props) => {
         options={{ title: 'Welcome' }}
       >
         {(screenProps) => (
-          <HomePage {...screenProps} />
+          <HomePage {...screenProps} updateAuthState={props.updateAuthState} />
         )}
       </Stack.Screen>
       <Stack.Screen name="Profile" >

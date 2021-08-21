@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function AppTextInput({ leftIcon, ...otherProps }) {

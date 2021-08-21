@@ -27,6 +27,14 @@ const SignIn = ({ navigation, updateAuthState }) => {
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={styles.banner}>
+        <Text style={styles.bannerTitle}>
+          Poppin
+        </Text>
+        <Text style={styles.bannerSubtittle}>
+          What's poppin at the dog park?
+        </Text>
+      </View>
       <View style={styles.container}>
         <Text style={styles.title}>Sign in to your account</Text>
         <AppTextInput
@@ -69,7 +77,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 50,
+  },
+  banner: {
+    marginTop: 50,
+    alignItems: 'center',
+  },
+  bannerTitle: {
+    fontSize: 120,
+    color: '#81D8D0'
+  },
+  bannerSubtittle: {
+    fontSize: 18,
+    fontWeight: '200'
   },
   title: {
     fontSize: 20,

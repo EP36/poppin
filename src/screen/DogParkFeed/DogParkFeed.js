@@ -8,7 +8,9 @@ import { API, graphqlOperation } from 'aws-amplify'
 import { createTodo } from '../../graphql/mutations'
 import { listTodos } from '../../graphql/queries'
 
-const initialState = { name: '', description: '' }
+import moment from 'moment';
+
+const initialState = { name: '', description: '', dateTime: '' }
 
 const DogParkFeed = () => {
   const [formState, setFormState] = useState(initialState)
@@ -32,7 +34,8 @@ const DogParkFeed = () => {
 
   async function addTodo() {
     try {
-      const todo = { ...formState }
+      const date = moment().utcOffset('+05:30').format(' hh:mm:ss a');
+      const todo = { ...formState, dateTime: date }
       setTodos([...todos, todo])
       setFormState(initialState)
       await API.graphql(graphqlOperation(createTodo, {input: todo}))
@@ -53,14 +56,15 @@ const DogParkFeed = () => {
         onChangeText={val => setInput('description', val)}
         style={styles.input}
         value={formState.description}
-        placeholder="Description"
+        placeholder="How's the park?"
       />
-      <Button title="Create Todo" onPress={addTodo} />
+      <Button title="Post Update" onPress={addTodo} />
       {
         todos.map((todo, index) => (
           <View key={todo.id ? todo.id : index} style={styles.todo}>
             <Text style={styles.todoName}>{todo.name}</Text>
             <Text>{todo.description}</Text>
+            <Text>– {todo.dateTime}</Text>
           </View>
         ))
       }
@@ -76,7 +80,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   todo: {  
-    marginBottom: 15 
+    marginBottom: 15,
+    // flexDirection: 'row' 
   },
   input: { 
     height: 50, 

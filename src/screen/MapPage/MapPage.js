@@ -14,10 +14,6 @@ const MapPage = ({ navigation, route }) => {
     navigation.navigate('DogPark')
   }
 
-  const handlePostPic = () => {
-    console.log('post pic')
-  }
-
   return (
     <MapView  
       style={{ flex: 1 }}

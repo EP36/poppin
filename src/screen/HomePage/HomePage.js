@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Auth } from 'aws-amplify';
 import { 
   View, 
   Text, 
@@ -27,6 +28,15 @@ const HomePage = ({ navigation, updateAuthState }) => {
     })();
   }, []);
 
+  async function signOut() {
+    try {
+      await Auth.signOut();
+      updateAuthState('loggedOut')
+    } catch (error) {
+      console.log('Error signing out:', error);
+    }
+  }
+
   let text = 'Waiting..';
   if(errorMsg) {
     text = errorMsg
@@ -37,6 +47,14 @@ const HomePage = ({ navigation, updateAuthState }) => {
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={styles.banner}>
+        <Text style={styles.bannerTitle}>
+          Poppin
+        </Text>
+        <Text style={styles.bannerSubtittle}>
+          What's poppin at the dog park?
+        </Text>
+      </View>
       <View style={styles.container}>
         <AppButton
           title="Dog Parks"
@@ -45,12 +63,17 @@ const HomePage = ({ navigation, updateAuthState }) => {
             navigation.navigate('Map', { name: 'EP', longitude: currLocation.coords?.longitude, latitude: currLocation.coords?.latitude })
           }
         />
-        <AppButton
+        {/* <AppButton
           title="Profile"
           leftIcon="account-circle"
           onPress={() =>
             navigation.navigate('Profile')
           }
+        /> */}
+        <AppButton
+          title="Sign out"
+          leftIcon="account-circle"
+          onPress={signOut}
         />
       </View>
     </SafeAreaView>
@@ -65,7 +88,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    marginTop: 50,
+  },
+  banner: {
+    alignItems: 'center',
+  },
+  bannerTitle: {
+    fontSize: 120,
+    color: '#81D8D0'
+  },
+  bannerSubtittle: {
+    fontSize: 18,
+    fontWeight: '200'
   },
 })
 
